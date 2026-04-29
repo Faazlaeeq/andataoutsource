@@ -1,0 +1,100 @@
+.featuresGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 28px;
+}
+
+.featureCard {
+  background: var(--bg-card);
+  border-radius: var(--radius-lg);
+  padding: 36px 28px;
+  border: 1px solid var(--border);
+  transition: all var(--transition-base);
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.featureCard:hover {
+  transform: translateY(-6px);
+  box-shadow: var(--shadow-xl);
+  border-color: var(--primary-100);
+}
+
+.featureCard h3 {
+  font-size: 1.1rem;
+}
+
+.featureCard p {
+  font-size: 0.92rem;
+  line-height: 1.7;
+}
+
+.featureIcon {
+  width: 58px;
+  height: 58px;
+  border-radius: var(--radius-md);
+  background: var(--primary-50);
+  color: var(--primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all var(--transition-base);
+}
+
+.featureCard:hover .featureIcon {
+  background: var(--primary);
+  color: white;
+}
+
+/* Protocols */
+.protocolsSection {
+  background: var(--bg-dark);
+  padding: 80px 0;
+}
+
+.protocolsGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 60px;
+  align-items: start;
+}
+
+.protocolsList {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 14px;
+}
+
+.protocolItem {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  color: var(--text-on-dark);
+  font-size: 0.95rem;
+  padding: 14px 18px;
+  background: rgba(255, 255, 255, 0.04);
+  border-radius: var(--radius-md);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.protocolItem svg {
+  color: var(--primary-light);
+  flex-shrink: 0;
+}
+
+@media (max-width: 1024px) {
+  .featuresGrid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .protocolsGrid {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+}
+
+@media (max-width: 640px) {
+  .featuresGrid {
+    grid-template-columns: 1fr;
+  }
+}

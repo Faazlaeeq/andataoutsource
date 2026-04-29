@@ -1,0 +1,155 @@
+.storyGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 60px;
+  align-items: center;
+}
+
+.storyContent {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.storyContent p {
+  font-size: 1.02rem;
+  line-height: 1.8;
+}
+
+.storyImage {
+  border-radius: var(--radius-xl);
+  overflow: hidden;
+  height: 420px;
+}
+
+.storyImage img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Dark Stats */
+.darkSection {
+  background: var(--bg-dark);
+  padding: 80px 0;
+}
+
+/* Values */
+.valuesGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 28px;
+}
+
+.valueCard {
+  background: var(--bg-card);
+  border-radius: var(--radius-lg);
+  padding: 36px 28px;
+  border: 1px solid var(--border);
+  transition: all var(--transition-base);
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.valueCard:hover {
+  transform: translateY(-6px);
+  box-shadow: var(--shadow-xl);
+  border-color: var(--primary-100);
+}
+
+.valueCard h3 {
+  font-size: 1.15rem;
+}
+
+.valueCard p {
+  font-size: 0.92rem;
+  line-height: 1.7;
+}
+
+.valueIcon {
+  width: 58px;
+  height: 58px;
+  border-radius: var(--radius-md);
+  background: var(--primary-50);
+  color: var(--primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all var(--transition-base);
+}
+
+.valueCard:hover .valueIcon {
+  background: var(--primary);
+  color: white;
+}
+
+/* Differentiators */
+.diffSection {
+  background: var(--bg-light);
+}
+
+.diffGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 60px;
+  align-items: center;
+}
+
+.diffImage {
+  border-radius: var(--radius-xl);
+  overflow: hidden;
+  height: 450px;
+}
+
+.diffImage img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.diffContent h2 {
+  margin-bottom: 24px;
+}
+
+.diffList {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.diffList li {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 1rem;
+  font-weight: 500;
+  color: var(--text-primary);
+}
+
+.diffList li svg {
+  color: var(--primary);
+  flex-shrink: 0;
+}
+
+@media (max-width: 1024px) {
+  .storyGrid,
+  .diffGrid {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+  .valuesGrid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .storyImage,
+  .diffImage {
+    height: 300px;
+  }
+}
+
+@media (max-width: 640px) {
+  .valuesGrid {
+    grid-template-columns: 1fr;
+  }
+}

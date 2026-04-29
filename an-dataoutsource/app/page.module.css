@@ -1,0 +1,131 @@
+.statsSection {
+  background: var(--bg-dark);
+  position: relative;
+  margin-top: -1px;
+}
+
+/* Services */
+.servicesSection {
+  background: var(--bg-white);
+}
+
+.servicesGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 28px;
+}
+
+/* Why Section */
+.whySection {
+  padding: 100px 0;
+  background: var(--bg-light);
+}
+
+.whyGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 60px;
+  align-items: center;
+}
+
+.whyImage {
+  position: relative;
+  border-radius: var(--radius-xl);
+  overflow: hidden;
+  height: 480px;
+}
+
+.whyImage img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.whyImageOverlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(12, 21, 36, 0.5), transparent);
+}
+
+.whyImageBadge {
+  position: absolute;
+  bottom: 24px;
+  left: 24px;
+  background: rgba(13, 148, 136, 0.95);
+  backdrop-filter: blur(10px);
+  border-radius: var(--radius-lg);
+  padding: 20px 28px;
+  color: white;
+  display: flex;
+  flex-direction: column;
+}
+
+.badgeNumber {
+  font-family: var(--font-heading);
+  font-size: 2.4rem;
+  font-weight: 800;
+  line-height: 1;
+}
+
+.badgeText {
+  font-size: 0.85rem;
+  opacity: 0.9;
+}
+
+.whyContent h2 {
+  margin-bottom: 20px;
+}
+
+.whyDesc {
+  font-size: 1.05rem;
+  line-height: 1.8;
+  color: var(--text-secondary);
+  margin-bottom: 28px;
+}
+
+.whyList {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  margin-bottom: 36px;
+}
+
+.whyList li {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-weight: 500;
+  color: var(--text-primary);
+  font-size: 1rem;
+}
+
+.checkIcon {
+  color: var(--primary);
+  flex-shrink: 0;
+}
+
+/* Contact */
+.contactSection {
+  background: var(--bg-light);
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+  .servicesGrid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .whyGrid {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+  .whyImage {
+    height: 350px;
+  }
+}
+
+@media (max-width: 640px) {
+  .servicesGrid {
+    grid-template-columns: 1fr;
+  }
+}

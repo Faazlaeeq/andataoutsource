@@ -1,0 +1,85 @@
+.quoteLayout {
+  display: grid;
+  grid-template-columns: 1fr 1.2fr;
+  gap: 60px;
+  align-items: start;
+}
+
+.quoteInfo h2 {
+  margin-bottom: 16px;
+}
+
+.quoteDesc {
+  font-size: 1.05rem;
+  line-height: 1.8;
+  color: var(--text-secondary);
+  margin-bottom: 32px;
+}
+
+.benefitsList {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  margin-bottom: 36px;
+}
+
+.benefitItem {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  font-weight: 500;
+  color: var(--text-primary);
+  font-size: 1rem;
+}
+
+.benefitIcon {
+  width: 46px;
+  height: 46px;
+  border-radius: var(--radius-md);
+  background: var(--primary-50);
+  color: var(--primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.directContact {
+  padding: 24px;
+  background: var(--bg-light);
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--border);
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.directContact p {
+  font-size: 0.9rem;
+  color: var(--text-muted);
+}
+
+.directContact a {
+  font-weight: 600;
+  color: var(--primary);
+}
+
+.directContact span {
+  font-weight: 500;
+  color: var(--text-primary);
+}
+
+.quoteForm {
+  background: var(--bg-card);
+  border-radius: var(--radius-xl);
+  padding: 40px;
+  border: 1px solid var(--border);
+  box-shadow: var(--shadow-lg);
+}
+
+@media (max-width: 1024px) {
+  .quoteLayout {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+}
