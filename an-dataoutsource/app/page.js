@@ -1,172 +1,131 @@
-import Link from 'next/link';
-import { Hero } from './components/Hero/Hero';
-import ServiceCard from './components/ServiceCard/ServiceCard';
-import ContactForm from './components/ContactForm/ContactForm';
-import StatsCounter from './components/StatsCounter/StatsCounter';
-import {
-  Monitor, DollarSign, FolderSync, Database, Headphones,
-  UserCheck, Shield, BookOpen, Calculator, ArrowRight, CheckCircle
-} from 'lucide-react';
+'use client';
+
+import { useState } from 'react';
 import styles from './page.module.css';
 
-const services = [
-  {
-    icon: Monitor,
-    title: 'IT Services',
-    description: 'Comprehensive IT support and infrastructure management to keep your technology running seamlessly and securely.',
-  },
-  {
-    icon: DollarSign,
-    title: 'Revenue Cycle Management',
-    description: 'Streamline your billing processes, reduce denials, and maximize revenue with our end-to-end RCM solutions.',
-  },
-  {
-    icon: FolderSync,
-    title: 'Provider Directory Sync',
-    description: 'Ensure accurate provider data across all platforms with automated synchronization and validation services.',
-  },
-  {
-    icon: Database,
-    title: 'Data Management Services',
-    description: 'Transform raw data into actionable insights with our comprehensive data entry, processing, and analytics solutions.',
-  },
-  {
-    icon: Headphones,
-    title: 'Contact Center Services',
-    description: 'Deliver exceptional customer experiences with our professional inbound and outbound contact center operations.',
-  },
-  {
-    icon: UserCheck,
-    title: 'Virtual Assistant',
-    description: 'Boost productivity with dedicated virtual assistants handling administrative tasks, scheduling, and communications.',
-  },
-  {
-    icon: Shield,
-    title: 'Insurance Agency Support',
-    description: 'Specialized back-office support for insurance agencies including policy management and claims processing.',
-  },
-  {
-    icon: BookOpen,
-    title: 'Credentialing Support',
-    description: 'Streamline provider credentialing with thorough verification, enrollment, and ongoing maintenance services.',
-  },
-  {
-    icon: Calculator,
-    title: 'Accounting Back-Office',
-    description: 'Professional bookkeeping, accounts payable/receivable, and financial reporting to keep your finances in order.',
-  },
-];
-
-const stats = [
-  { value: 50, suffix: '%', label: 'Cost Savings' },
-  { value: 99, suffix: '.9%', label: 'Accuracy Rate' },
-  { value: 500, suffix: '+', label: 'Projects Delivered' },
-  { value: 24, suffix: '/7', label: 'Support Available' },
-];
-
-const whyUs = [
-  'Dedicated teams tailored to your needs',
-  'Enterprise-grade security & compliance',
-  'Transparent reporting & communication',
-  'Rapid 15-day implementation',
-];
-
 export default function HomePage() {
+  const [form, setForm] = useState({ name: '', email: '', subject: '', message: '' });
+  const [status, setStatus] = useState('idle');
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setStatus('sending');
+    try {
+      const res = await fetch('/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(form),
+      });
+      if (res.ok) {
+        setStatus('success');
+        setForm({ name: '', email: '', subject: '', message: '' });
+      } else {
+        setStatus('error');
+      }
+    } catch {
+      setStatus('error');
+    }
+  };
+
   return (
-    <>
-      {/* Hero */}
-      <Hero
-        label="Your Trusted Outsourcing Partner"
-        title="Excellence, Reliability, Security, Scalability &"
-        titleHighlight="Cost Efficiency"
-        subtitle="AN Dataoutsource delivers a comprehensive suite of outsourcing services designed to accelerate your business growth while reducing operational costs."
-        ctas={[
-          { label: 'Explore Services', href: '/services' },
-          { label: 'Get a Quote', href: '/quote' },
-        ]}
-        backgroundImage="https://images.unsplash.com/photo-1521737711867-e3b97375f902?w=1920&q=80"
-      />
-
-      {/* Stats Bar */}
-      <section className={styles.statsSection}>
-        <div className="container">
-          <StatsCounter stats={stats} />
+    <div className="page-content">
+      {/* Hero Banner */}
+      <div className={styles.heroBanner}>
+        <img
+          src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=960&q=80"
+          alt="Business team meeting"
+          className={styles.heroImage}
+        />
+        <div className={styles.heroOverlay}>
+          <p className={styles.heroText}>
+            Quality, Reliability, Security,<br />
+            Scalability, and Cost Savings
+          </p>
         </div>
-      </section>
+      </div>
 
-      {/* Services */}
-      <section className={`section ${styles.servicesSection}`}>
-        <div className="container">
-          <div className="section-header">
-            <span className="section-label">What We Offer</span>
-            <h2>Our Services</h2>
-            <p>
-              AN Dataoutsource offers a spectrum of services tailored to expedite and
-              optimize the attainment of your objectives. Through strategic outsourcing,
-              companies can realize significant savings in technology, resources, and operations.
-            </p>
-          </div>
-          <div className={styles.servicesGrid}>
-            {services.map((svc, i) => (
-              <ServiceCard key={i} {...svc} />
-            ))}
-          </div>
-        </div>
-      </section>
+      {/* Our Services */}
+      <h1 style={{ marginTop: '30px' }}>Our Services</h1>
 
-      {/* Why Choose Us */}
-      <section className={styles.whySection}>
-        <div className="container">
-          <div className={styles.whyGrid}>
-            <div className={styles.whyImage}>
-              <img
-                src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?w=800&q=80"
-                alt="Professional team collaboration"
-              />
-              <div className={styles.whyImageOverlay} />
-              <div className={styles.whyImageBadge}>
-                <span className={styles.badgeNumber}>15+</span>
-                <span className={styles.badgeText}>Years of Excellence</span>
-              </div>
-            </div>
-            <div className={styles.whyContent}>
-              <span className="section-label">Why AN Dataoutsource</span>
-              <h2>Your Strategic Outsourcing Partner</h2>
-              <p className={styles.whyDesc}>
-                We combine deep industry expertise with cutting-edge technology to deliver
-                outsourcing solutions that drive measurable results. Our commitment to quality,
-                security, and client satisfaction sets us apart.
-              </p>
-              <ul className={styles.whyList}>
-                {whyUs.map((item, i) => (
-                  <li key={i}>
-                    <CheckCircle size={20} className={styles.checkIcon} />
-                    {item}
-                  </li>
-                ))}
-              </ul>
-              <Link href="/about" className="btn btn-primary">
-                Learn More About Us <ArrowRight size={18} />
-              </Link>
-            </div>
-          </div>
-        </div>
-      </section>
+      <p>
+        AN Dataoutsource offers a spectrum of services tailored to expedite and optimize
+        the attainment of your objectives. Through strategic outsourcing, companies can
+        realize cost savings in technology, hardware, human resources, and more. Our services
+        encompass Data Management, Contact Center, and Virtual Assistant support.
+      </p>
+
+      <p>Our services are</p>
+
+      <ul className="arrow-list">
+        <li><a href="/services">IT Services</a></li>
+        <li><a href="/services">Revenue Cycle Management (RCM)</a></li>
+        <li><a href="/services">Provider Directory Sync</a></li>
+        <li><a href="/services">Data Management Services</a></li>
+        <li><a href="/services">Contact Center Services</a></li>
+        <li><a href="/services">Virtual Assistant</a></li>
+        <li><a href="/services">Insurance Agency Support Staff</a></li>
+        <li><a href="/services">Back-Office Credentialing Support</a></li>
+        <li><a href="/services">Accounting Back-Office</a></li>
+      </ul>
+
+      <p>
+        Thank you for your interest in our services. Please provide some details about
+        the services you are interested in and our expert will call you back to discuss
+        your requirements and send you a quick quote.
+      </p>
 
       {/* Contact Form */}
-      <section className={`section ${styles.contactSection}`}>
-        <div className="container">
-          <div className="section-header">
-            <span className="section-label">Get Started</span>
-            <h2>Request a Quick Quote</h2>
-            <p>
-              Interested in our services? Share your project details and our experts will
-              reach out to discuss requirements and provide a tailored quote.
-            </p>
-          </div>
-          <ContactForm />
+      <form onSubmit={handleSubmit}>
+        <div className="form-group">
+          <label>Your Name (required)</label>
+          <input
+            type="text"
+            value={form.name}
+            onChange={(e) => setForm({ ...form, name: e.target.value })}
+            required
+          />
         </div>
-      </section>
-    </>
+
+        <div className="form-group">
+          <label>Your Email (required)</label>
+          <input
+            type="email"
+            value={form.email}
+            onChange={(e) => setForm({ ...form, email: e.target.value })}
+            required
+            style={{ maxWidth: '450px' }}
+          />
+        </div>
+
+        <div className="form-group">
+          <label>Subject</label>
+          <input
+            type="text"
+            value={form.subject}
+            onChange={(e) => setForm({ ...form, subject: e.target.value })}
+          />
+        </div>
+
+        <div className="form-group">
+          <label>About your company and Project details</label>
+          <textarea
+            value={form.message}
+            onChange={(e) => setForm({ ...form, message: e.target.value })}
+            required
+          />
+        </div>
+
+        <button type="submit" className="btn-send" disabled={status === 'sending'}>
+          {status === 'sending' ? 'Sending...' : 'Send'}
+        </button>
+
+        {status === 'success' && (
+          <p className="status-success">Thank you! Your message has been sent successfully.</p>
+        )}
+        {status === 'error' && (
+          <p className="status-error">Something went wrong. Please try again.</p>
+        )}
+      </form>
+    </div>
   );
 }

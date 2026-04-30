@@ -4,26 +4,10 @@ import Footer from './components/Footer/Footer';
 
 export const metadata = {
   title: {
-    default: 'AN Dataoutsource — Your Trusted Outsourcing Partner',
+    default: 'AN Dataoutsource — Your Outsourcing Partner',
     template: '%s | AN Dataoutsource',
   },
-  description:
-    'AN Dataoutsource delivers premium data management, IT services, contact center, and virtual assistant solutions. Achieve cost savings with reliable, secure, and scalable outsourcing.',
-  keywords: [
-    'outsourcing',
-    'data management',
-    'IT services',
-    'BPO',
-    'contact center',
-    'virtual assistant',
-    'AN Dataoutsource',
-  ],
-  openGraph: {
-    title: 'AN Dataoutsource — Your Trusted Outsourcing Partner',
-    description:
-      'Premium outsourcing services for data management, IT, contact center, and more.',
-    type: 'website',
-  },
+  description: 'AN Dataoutsource offers comprehensive outsourcing solutions including IT services, data management, contact center services, and more.',
 };
 
 export default function RootLayout({ children }) {

@@ -1,60 +1,92 @@
-import { PageBanner } from '../components/Hero/Hero';
-import ContactForm from '../components/ContactForm/ContactForm';
-import { Clock, CheckCircle, Headphones } from 'lucide-react';
-import styles from './page.module.css';
+'use client';
 
-export const metadata = {
-  title: 'Get a Quote',
-  description: 'Request a quick quote from AN Dataoutsource. Share your project requirements and receive a tailored proposal within 24 hours.',
-};
-
-const benefits = [
-  { icon: <Clock size={22} />, text: 'Response within 24 hours' },
-  { icon: <CheckCircle size={22} />, text: 'No obligation, free consultation' },
-  { icon: <Headphones size={22} />, text: 'Dedicated expert assigned to you' },
-];
+import { useState } from 'react';
 
 export default function QuotePage() {
-  return (
-    <>
-      <PageBanner
-        title="Get a Quick Quote"
-        subtitle="Tell us about your project and we will provide a customized proposal tailored to your needs."
-        breadcrumbs="Quote"
-        backgroundImage="https://images.unsplash.com/photo-1553877522-43269d4ea984?w=1920&q=80"
-      />
+  const [form, setForm] = useState({ name: '', email: '', subject: '', message: '' });
+  const [status, setStatus] = useState('idle');
 
-      <section className={`section`}>
-        <div className="container">
-          <div className={styles.quoteLayout}>
-            <div className={styles.quoteInfo}>
-              <span className="section-label">Let&apos;s Talk</span>
-              <h2>Ready to Optimize Your Operations?</h2>
-              <p className={styles.quoteDesc}>
-                Share your project details and our team of experts will analyze your
-                requirements and get back to you with a comprehensive, no-obligation
-                quote within 24 hours.
-              </p>
-              <div className={styles.benefitsList}>
-                {benefits.map((b, i) => (
-                  <div key={i} className={styles.benefitItem}>
-                    <div className={styles.benefitIcon}>{b.icon}</div>
-                    <span>{b.text}</span>
-                  </div>
-                ))}
-              </div>
-              <div className={styles.directContact}>
-                <p>Or reach us directly:</p>
-                <a href="mailto:support@andataoutsource.com">support@andataoutsource.com</a>
-                <span>+1 (555) 123-4567</span>
-              </div>
-            </div>
-            <div className={styles.quoteForm}>
-              <ContactForm />
-            </div>
-          </div>
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setStatus('sending');
+    try {
+      const res = await fetch('/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(form),
+      });
+      if (res.ok) {
+        setStatus('success');
+        setForm({ name: '', email: '', subject: '', message: '' });
+      } else {
+        setStatus('error');
+      }
+    } catch {
+      setStatus('error');
+    }
+  };
+
+  return (
+    <div className="page-content">
+      <h1>Quote</h1>
+
+      <p>
+        Thank you for your interest in our services, Please provide some details about
+        the services you are interested in and our expert will call you back to discuss
+        your requirements and send you a quick quote.
+      </p>
+
+      <form onSubmit={handleSubmit}>
+        <div className="form-group">
+          <label>Your Name (required)</label>
+          <input
+            type="text"
+            value={form.name}
+            onChange={(e) => setForm({ ...form, name: e.target.value })}
+            required
+          />
         </div>
-      </section>
-    </>
+
+        <div className="form-group">
+          <label>Your Email (required)</label>
+          <input
+            type="email"
+            value={form.email}
+            onChange={(e) => setForm({ ...form, email: e.target.value })}
+            required
+            style={{ maxWidth: '450px' }}
+          />
+        </div>
+
+        <div className="form-group">
+          <label>Subject</label>
+          <input
+            type="text"
+            value={form.subject}
+            onChange={(e) => setForm({ ...form, subject: e.target.value })}
+          />
+        </div>
+
+        <div className="form-group">
+          <label>About your company and Project details</label>
+          <textarea
+            value={form.message}
+            onChange={(e) => setForm({ ...form, message: e.target.value })}
+            required
+          />
+        </div>
+
+        <button type="submit" className="btn-send" disabled={status === 'sending'}>
+          {status === 'sending' ? 'Sending...' : 'Send'}
+        </button>
+
+        {status === 'success' && (
+          <p className="status-success">Thank you! Your message has been sent successfully.</p>
+        )}
+        {status === 'error' && (
+          <p className="status-error">Something went wrong. Please try again.</p>
+        )}
+      </form>
+    </div>
   );
 }

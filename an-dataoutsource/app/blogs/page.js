@@ -1,110 +1,55 @@
-import { PageBanner } from '../components/Hero/Hero';
-import Link from 'next/link';
-import { Calendar, Clock, ArrowRight, User } from 'lucide-react';
-import styles from './page.module.css';
-
 export const metadata = {
   title: 'Blogs',
-  description: 'Insights, tips, and industry updates from the AN Dataoutsource team. Stay informed about outsourcing trends and best practices.',
+  description: 'Insights and articles from AN Dataoutsource on outsourcing, healthcare, IT services, and business efficiency.',
 };
 
 const blogPosts = [
   {
-    title: 'Top 5 Benefits of Outsourcing Data Management in 2025',
-    excerpt: 'Discover how strategic data management outsourcing can reduce costs by up to 50%, improve accuracy, and free your team to focus on core business objectives.',
-    image: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&q=80',
-    date: 'April 15, 2025',
-    readTime: '5 min read',
-    author: 'AN Dataoutsource Team',
-    category: 'Data Management',
+    title: 'Back-office Credentialing Solutions: Streamlining Healthcare Administration',
+    excerpt: 'In the healthcare industry, efficient and accurate credentialing of medical professionals is essential for maintaining high standards of care and ensuring compliance with regulatory requirements. Back-office credentialing solutions are designed to manage this complex process, allowing healthcare organizations to focus on their primary mission of delivering quality patient care.',
+    image: 'https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?w=600&q=80',
   },
   {
-    title: 'How Contact Centers Are Evolving with AI Integration',
-    excerpt: 'Explore the future of customer service: how AI-powered tools are enhancing human agents rather than replacing them, and what this means for outsourced contact centers.',
-    image: 'https://images.unsplash.com/photo-1531973576160-7125cd663d86?w=800&q=80',
-    date: 'March 28, 2025',
-    readTime: '7 min read',
-    author: 'AN Dataoutsource Team',
-    category: 'Contact Center',
+    title: 'Call Center Solutions: Elevating Customer Experience and Business Efficiency',
+    excerpt: 'In today\'s competitive business environment, delivering exceptional customer service is paramount. Call center solutions are designed to help businesses manage customer interactions efficiently, enhancing customer satisfaction and loyalty. These solutions provide a range of tools and services that streamline communication processes, support customer needs, and drive business growth.',
+    image: 'https://images.unsplash.com/photo-1556745757-8d76bdb6984b?w=600&q=80',
   },
   {
-    title: 'HIPAA Compliance Checklist for Outsourced Healthcare Operations',
-    excerpt: 'A comprehensive guide to ensuring your outsourcing partner meets all HIPAA requirements for handling protected health information securely.',
-    image: 'https://images.unsplash.com/photo-1576091160550-2173dba999ef?w=800&q=80',
-    date: 'March 10, 2025',
-    readTime: '8 min read',
-    author: 'AN Dataoutsource Team',
-    category: 'Healthcare',
+    title: 'Data Management Services: Optimizing Your Business Data for Success',
+    excerpt: 'In today\'s data-driven world, businesses need to efficiently manage and utilize their data to stay competitive. Data management services are crucial in helping organizations organize, store, and analyze their data, ensuring that it is accessible and valuable. Effective data management can lead to better decision-making, enhanced operational efficiency, and improved business outcomes.',
+    image: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=600&q=80',
   },
   {
-    title: 'Virtual Assistants vs. In-House Staff: A Cost Comparison',
-    excerpt: 'Breaking down the real costs of hiring in-house administrative staff versus leveraging virtual assistants from a trusted outsourcing partner.',
-    image: 'https://images.unsplash.com/photo-1553877522-43269d4ea984?w=800&q=80',
-    date: 'February 22, 2025',
-    readTime: '6 min read',
-    author: 'AN Dataoutsource Team',
-    category: 'Virtual Assistant',
+    title: 'IT Solution Services: Empowering Your Business for the Digital Age',
+    excerpt: 'In the modern business landscape, staying competitive means leveraging the best technology available. IT solution services play a crucial role in this, offering comprehensive support to help businesses manage, optimize, and secure their IT infrastructure. From enhancing operational efficiency to safeguarding data integrity, these services are essential for companies aiming to thrive in the digital age.',
+    image: 'https://images.unsplash.com/photo-1504384308090-c894fdcc538d?w=600&q=80',
   },
   {
-    title: 'Revenue Cycle Management: Reducing Days in A/R',
-    excerpt: 'Learn proven strategies for accelerating your revenue cycle, reducing denial rates, and improving net collections through expert RCM outsourcing.',
-    image: 'https://images.unsplash.com/photo-1554224155-6726b3ff858f?w=800&q=80',
-    date: 'February 5, 2025',
-    readTime: '6 min read',
-    author: 'AN Dataoutsource Team',
-    category: 'RCM',
-  },
-  {
-    title: 'Securing Your Outsourced Operations: Best Practices',
-    excerpt: 'Essential security measures every business should verify when choosing an outsourcing partner, from SOC 2 certification to employee screening protocols.',
-    image: 'https://images.unsplash.com/photo-1563986768609-322da13575f2?w=800&q=80',
-    date: 'January 18, 2025',
-    readTime: '5 min read',
-    author: 'AN Dataoutsource Team',
-    category: 'Security',
+    title: 'The Role of IT Solution Services in Modern Business',
+    excerpt: 'In today\'s rapidly evolving technological landscape, businesses across various industries are increasingly reliant on robust IT solution services to maintain competitiveness and drive innovation. As digital transformation becomes a critical factor for success, companies need comprehensive and adaptive IT solutions that address their unique challenges and objectives.',
+    image: '',
   },
 ];
 
 export default function BlogsPage() {
   return (
-    <>
-      <PageBanner
-        title="Blog & Insights"
-        subtitle="Stay updated with the latest trends, tips, and insights from the world of outsourcing."
-        breadcrumbs="Blogs"
-        backgroundImage="https://images.unsplash.com/photo-1499750310107-5fef28a66643?w=1920&q=80"
-      />
+    <div className="page-content">
+      <h1>Blogs</h1>
 
-      <section className={`section`}>
-        <div className="container">
-          <div className={styles.blogGrid}>
-            {blogPosts.map((post, i) => (
-              <article key={i} className={styles.blogCard}>
-                <div className={styles.blogImage}>
-                  <img src={post.image} alt={post.title} />
-                  <span className={styles.blogCategory}>{post.category}</span>
-                </div>
-                <div className={styles.blogBody}>
-                  <div className={styles.blogMeta}>
-                    <span><Calendar size={14} /> {post.date}</span>
-                    <span><Clock size={14} /> {post.readTime}</span>
-                  </div>
-                  <h3 className={styles.blogTitle}>{post.title}</h3>
-                  <p className={styles.blogExcerpt}>{post.excerpt}</p>
-                  <div className={styles.blogFooter}>
-                    <span className={styles.blogAuthor}>
-                      <User size={14} /> {post.author}
-                    </span>
-                    <span className={styles.readMore}>
-                      Read More <ArrowRight size={14} />
-                    </span>
-                  </div>
-                </div>
-              </article>
-            ))}
+      {blogPosts.map((post, i) => (
+        <div key={i} className="blog-post">
+          {post.image && (
+            <div className="blog-post-image">
+              <img src={post.image} alt={post.title} />
+            </div>
+          )}
+          <div className="blog-post-content">
+            <h2>{post.title}</h2>
+            <p>{post.excerpt}</p>
+            <a href="#" className="read-more-btn">Read More</a>
           </div>
         </div>
-      </section>
-    </>
+      ))}
+    </div>
   );
 }

@@ -1,163 +1,113 @@
 .footer {
-  background: var(--bg-dark);
-  color: var(--text-on-dark);
-  padding: 80px 0 0;
+  margin-top: auto;
 }
 
-.footerTop {
-  display: grid;
-  grid-template-columns: 1.5fr 1fr 1fr 1.2fr;
-  gap: 48px;
-  max-width: var(--container-width);
+.footerMain {
+  background: var(--bg-footer);
+  padding: 30px 0 24px;
+}
+
+.footerInner {
+  max-width: 960px;
   margin: 0 auto;
-  padding: var(--container-padding);
-  padding-bottom: 60px;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-}
-
-.footerBrand {
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
+  padding: 0 20px;
 }
 
 .footerLogo {
-  height: 45px;
-  width: auto;
+  text-decoration: none;
+  font-size: 24px;
+  font-weight: 300;
+  font-family: 'Open Sans', sans-serif;
 }
 
-.footerDesc {
-  color: var(--text-on-dark-muted);
-  font-size: 0.95rem;
-  line-height: 1.7;
-}
-
-.footerSocials {
-  display: flex;
-  gap: 12px;
-  margin-top: 8px;
-}
-
-.socialLink {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 42px;
-  height: 42px;
-  border-radius: var(--radius-full);
-  background: rgba(255, 255, 255, 0.06);
-  color: var(--text-on-dark-muted);
-  transition: all var(--transition-base);
+.footerLogo:hover {
   text-decoration: none;
 }
 
-.socialLink:hover {
-  background: var(--primary);
-  color: white;
-  transform: translateY(-3px);
-}
-
-.footerCol h4 {
-  color: white;
-  font-size: 1rem;
+.logoAccent {
+  color: var(--accent);
   font-weight: 600;
-  margin-bottom: 24px;
-  position: relative;
-  padding-bottom: 12px;
 }
 
-.footerCol h4::after {
-  content: '';
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 30px;
-  height: 2px;
-  background: var(--primary);
+.logoText {
+  color: white;
+  font-weight: 300;
 }
 
-.footerLinks {
-  list-style: none;
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-}
-
-.footerLinks li a {
-  color: var(--text-on-dark-muted);
-  font-size: 0.9rem;
-  transition: all var(--transition-fast);
+.footerContact {
+  max-width: 960px;
+  margin: 20px auto 0;
+  padding: 0 20px;
   display: flex;
   align-items: center;
-  gap: 6px;
-  text-decoration: none;
-}
-
-.footerLinks li a:hover {
-  color: var(--primary-light);
-  padding-left: 4px;
+  gap: 30px;
+  flex-wrap: wrap;
 }
 
 .contactItem {
   display: flex;
-  align-items: flex-start;
-  gap: 12px;
-  color: var(--text-on-dark-muted);
-  font-size: 0.9rem;
-  margin-bottom: 16px;
+  align-items: center;
+  gap: 8px;
+  color: #cccccc;
+  font-size: 13px;
 }
 
-.contactIcon {
-  color: var(--primary);
-  margin-top: 2px;
+.contactItem svg {
+  color: #999999;
   flex-shrink: 0;
 }
 
-.footerBottom {
-  max-width: var(--container-width);
-  margin: 0 auto;
-  padding: 24px 24px;
+.emailLink {
+  color: var(--accent);
+  text-decoration: none;
+}
+
+.emailLink:hover {
+  text-decoration: underline;
+}
+
+.socialLinks {
+  display: flex;
+  gap: 8px;
+  margin-left: auto;
+}
+
+.socialIcon {
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  color: #999999;
+  transition: color 0.2s;
 }
 
-.copyright {
-  color: var(--text-on-dark-muted);
-  font-size: 0.85rem;
+.socialIcon:hover {
+  color: var(--accent);
 }
 
-.footerBottomLinks {
-  display: flex;
-  gap: 24px;
+/* Footer bottom bar */
+.footerBottom {
+  background: var(--bg-footer-bottom);
+  padding: 12px 0;
 }
 
-.footerBottomLinks a {
-  color: var(--text-on-dark-muted);
-  font-size: 0.85rem;
-  text-decoration: none;
-  transition: color var(--transition-fast);
+.footerBottomInner {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 0 20px;
+  font-size: 12px;
+  color: #cccccc;
 }
 
-.footerBottomLinks a:hover {
-  color: var(--primary-light);
-}
-
-@media (max-width: 1024px) {
-  .footerTop {
-    grid-template-columns: 1fr 1fr;
-  }
-}
-
-@media (max-width: 640px) {
-  .footerTop {
-    grid-template-columns: 1fr;
-    gap: 36px;
-  }
-
-  .footerBottom {
+@media (max-width: 768px) {
+  .footerContact {
     flex-direction: column;
-    gap: 12px;
-    text-align: center;
+    align-items: flex-start;
+    gap: 14px;
+  }
+
+  .socialLinks {
+    margin-left: 0;
   }
 }
