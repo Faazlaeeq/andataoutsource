@@ -1,4 +1,7 @@
 import { NextResponse } from 'next/server';
+import { Resend } from 'resend';
+
+const resend = new Resend(process.env.RESEND_API_KEY);
 
 export async function POST(request) {
   try {
@@ -12,30 +15,35 @@ export async function POST(request) {
       );
     }
 
-    // In production, integrate with an email service like:
-    // - Resend (resend.com)
-    // - SendGrid
-    // - Nodemailer with SMTP
-    //
-    // Example with Resend:
-    // const resend = new Resend(process.env.RESEND_API_KEY);
-    // await resend.emails.send({
-    //   from: 'website@andataoutsource.com',
-    //   to: 'support@andataoutsource.com',
-    //   subject: `New Inquiry: ${subject || 'No Subject'}`,
-    //   html: `
-    //     <h2>New Contact Form Submission</h2>
-    //     <p><strong>Name:</strong> ${name}</p>
-    //     <p><strong>Email:</strong> ${email}</p>
-    //     <p><strong>Subject:</strong> ${subject || 'N/A'}</p>
-    //     <p><strong>Message:</strong></p>
-    //     <p>${message}</p>
-    //   `,
-    // });
+    // Send email via Resend
+    const { data, error } = await resend.emails.send({
+      from: 'AN Dataoutsource <website@andataoutsource.com>',
+      to: 'support@andataoutsource.com',
+      replyTo: email,
+      subject: `New Inquiry: ${subject || 'Contact Form Submission'}`,
+      html: `
+        <h2>New Contact Form Submission</h2>
+        <table style="border-collapse:collapse;width:100%;max-width:500px;">
+          <tr><td style="padding:8px;font-weight:bold;border-bottom:1px solid #ddd;">Name</td><td style="padding:8px;border-bottom:1px solid #ddd;">${name}</td></tr>
+          <tr><td style="padding:8px;font-weight:bold;border-bottom:1px solid #ddd;">Email</td><td style="padding:8px;border-bottom:1px solid #ddd;">${email}</td></tr>
+          <tr><td style="padding:8px;font-weight:bold;border-bottom:1px solid #ddd;">Subject</td><td style="padding:8px;border-bottom:1px solid #ddd;">${subject || 'N/A'}</td></tr>
+        </table>
+        <h3 style="margin-top:20px;">Message</h3>
+        <p style="background:#f5f5f5;padding:16px;border-radius:4px;white-space:pre-wrap;">${message}</p>
+        <hr style="margin-top:30px;border:none;border-top:1px solid #ddd;" />
+        <p style="color:#999;font-size:12px;">Sent from andataoutsource.com contact form</p>
+      `,
+    });
 
-    // For now, log the submission
-    console.log('Contact form submission:', { name, email, subject, message });
-    console.log('→ Would send email to: support@andataoutsource.com');
+    if (error) {
+      console.error('Resend error:', error);
+      return NextResponse.json(
+        { error: 'Failed to send email. Please try again.' },
+        { status: 500 }
+      );
+    }
+
+    console.log('Email sent successfully. ID:', data?.id);
 
     return NextResponse.json(
       { success: true, message: 'Your message has been received. We will get back to you shortly.' },
