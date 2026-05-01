@@ -15,10 +15,13 @@ export default function ContactPage() {
       </p>
 
       <p>
-        M. Aamir Habib<br />
+        Amir Habib<br />
         45 Bibury Road<br />
         Birmingham<br />
         B28 0HG<br />
+        <br />
+        QFS Trade Tower plot no 250 lane 23<br />
+        2nd Floor office 202 precinct 10 a bahria town karachi. Po box 75340<br />
         Phone: 0121 294 4535
       </p>
 
@@ -31,8 +34,8 @@ export default function ContactPage() {
       <p className="accent-text">Business Hours</p>
 
       <p>
-        Monday – Friday: 9:00 AM – 6:00 PM (GMT)<br />
-        Saturday – Sunday: Closed
+        Monday – Saturday: 9:00 AM – 6:00 PM (GMT)<br />
+        Sunday: Closed
       </p>
     </div>
   );

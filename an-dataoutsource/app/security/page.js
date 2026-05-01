@@ -8,15 +8,10 @@ export default function SecurityPage() {
     <div className="page-content">
       <h1>Security &amp; Privacy</h1>
 
-      <p className="accent-text">
-        AN Dataoutsource is SOC 2 Type II certified.
-      </p>
-
       <p>
         At AN Dataoutsource, we take data security and privacy extremely seriously.
-        Our SOC 2 Type II certification demonstrates our commitment to maintaining
-        the highest standards of security, availability, processing integrity,
-        confidentiality, and privacy.
+        We are committed to maintaining the highest standards of security, availability, 
+        processing integrity, confidentiality, and privacy.
       </p>
 
       <p>

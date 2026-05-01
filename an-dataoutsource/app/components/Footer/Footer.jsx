@@ -16,9 +16,9 @@ export default function Footer() {
           <div className={styles.contactItem}>
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5"><path d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"/></svg>
             <div>
-              <span>45 Bibury Road</span>
+              <span>45 Bibury Road, Birmingham, B28 0HG</span>
               <br />
-              <span>Birmingham, B28 0HG</span>
+              <span>QFS Trade Tower plot no 250 lane 23, 2nd Floor office 202 precinct 10 a bahria town karachi. Po box 75340</span>
             </div>
           </div>
 

@@ -75,10 +75,6 @@ export default function AboutPage() {
         Choosing AN Dataoutsource means choosing a partner dedicated to not just meeting
         but exceeding your expectations in every aspect of our service delivery.
       </p>
-
-      <p className="accent-text">
-        AN Dataoutsource is SOC 2 Type II certified.
-      </p>
     </div>
   );
 }
