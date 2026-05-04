@@ -18,6 +18,7 @@ export default function Footer() {
             <div>
               <span>45 Bibury Road, Birmingham, B28 0HG</span>
               <br />
+              <strong>Backup Address:</strong><br />
               <span>QFS Trade Tower plot no 250 lane 23, 2nd Floor office 202 precinct 10 a bahria town karachi. Po box 75340</span>
             </div>
           </div>
