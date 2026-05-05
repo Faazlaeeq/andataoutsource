@@ -20,7 +20,7 @@ export default function ContactPage() {
         Birmingham<br />
         B28 0HG<br />
         <br />
-        <strong>Backup Address:</strong><br />
+        <strong>Backup Office Address:</strong><br />
         QFS Trade Tower plot no 250 lane 23<br />
         2nd Floor office 202 precinct 10 a bahria town karachi. Po box 75340<br />
         Phone: 0121 294 4535
